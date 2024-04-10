@@ -1,0 +1,96 @@
+<html>
+
+	<head>
+		<title>Weather App</title>
+		
+		<!--
+			
+			function demo(xyz){
+				abc
+				
+				return xyz
+			}
+			
+			
+			(xyz) => { abc return xyz }
+			
+		
+		-->
+		
+	</head>
+
+
+	<body>
+	
+			<h1 align="center">Weather App</h1>
+			
+			<br><br>
+			
+			
+			<table border="1" align="center">
+			
+				<form>
+			
+					<tr>
+						<th>City </th>
+						<td><input type="text" id="city"></td>
+					</tr>
+					
+					<tr>
+						<td colspan="2" align="center"><input type="submit" value="submit" 
+						id="submit"></td>
+					</tr>
+				
+					<tr>
+						<td><span id="cityName">City</span></td>
+						<td><span id ="temp">Temp</span></td>
+					</tr>
+				
+				
+				</form>
+			
+			</table>
+			
+			<span id="cityName"></span>
+			<span id ="temp"></span>
+			
+			
+			<script>
+			
+				const options = {
+			method: 'GET',
+			headers: {
+				'X-RapidAPI-Key': 'c4bf0e8364msh3220422b2fd60cep1f9af5jsn7dd4a255b808',
+				'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
+					}
+				};
+			
+			const weatherapp = (city) => {
+			
+					cityName.innerHTML = city
+			
+					fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=' + city ,
+								options)
+					.then( (response) => { return response.json() })
+					.then( (data) => { console.log(data) 
+						
+						temp.innerHTML = data.temp
+					})
+			
+			}	
+			
+			
+			
+			submit.addEventListener("click", (event) => {
+					event.preventDefault()
+					weatherapp(city.value)
+			})
+			
+			weatherapp("pune")
+			</script>
+			
+	
+	</body>
+
+</html>
+
